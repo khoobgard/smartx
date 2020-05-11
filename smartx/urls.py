@@ -23,3 +23,4 @@ urlpatterns = [
     url(r'^register/', include('register.urls')),
 
 ]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
