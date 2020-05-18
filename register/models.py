@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Master(models.Model):
     name = models.CharField(max_length=200)
-    type = models.Choices({'r':'raspberry','a':'arduino'})
+    type = models.CharField(max_length=300)
     code = models.IntegerField(unique=True)
 
     def __str__(self):
@@ -11,7 +11,7 @@ class Master(models.Model):
 
 class Device(models.Model):
     name = models.CharField(max_length=200)
-    type = models.Choices({'d':'door','c':'camera','l':'lock'})
+    type = models.CharField(max_length=300)
     code = models.IntegerField(unique=True)
     master = models.ForeignKey(Master,on_delete=models.CASCADE)
 
