@@ -11,7 +11,7 @@ class Master(models.Model):
 
 class Device(models.Model):
     name = models.CharField(max_length=200)
-    type = models.Choices()
+    type = models.Choices({'d':'door','c':'camera','l':'lock'})
     code = models.IntegerField(unique=True)
     master = models.ForeignKey(Master,on_delete=models.CASCADE)
 
