@@ -16,4 +16,4 @@ class Device(models.Model):
     master = models.ForeignKey(Master,on_delete=models.CASCADE)
 
     def __str__(self):
-        
+        return self.name
