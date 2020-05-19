@@ -1,7 +1,7 @@
 from django.conf.urls import url
-from register.views import DeviceView
+from register import views
 
 urlpatterns = [
-    url(r'^devices/', DeviceView.as_view()),
+    url(r'^devices/', views.DeviceView.as_view()),
 
 ]
