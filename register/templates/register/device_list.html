@@ -1,10 +1,10 @@
-{% extends 'register/register_base' %}
+{% extends 'register/register_base.html' %}
 {% block content %}
 
 <h1>Welcome to list of Devices </h1>
 <ol>
-  {% for device in device_list %}
-    <h2><li>{{ device.name }}</li></h2>
+  {% for device in devices %}
+    <h2><li><a href="{{ device.id }}">{{ device.name }}</a></li></h2>
   {% endfor %}
 </ol>
 {% endblock %}

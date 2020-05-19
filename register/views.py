@@ -15,6 +15,7 @@ from django.utils import timezone
 class DeviceListView(ListView):
     context_object_name = 'devices'
     model = Device
+    template_name = 'register/device_list.html'
 
 class DeviceDetailView(DetailView):
     context_object_name = 'device_detail'

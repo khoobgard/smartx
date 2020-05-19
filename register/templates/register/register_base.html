@@ -5,10 +5,14 @@
     <title>Register</title>
   </head>
   <body>
-    <h1>Register Your Devices</h1>
-    <li><a href="{% url register:list %}"></a></li>
-    <li><a href="{% url register:detail %}"></a></li>
+    <nav>
+      <li>
+        <a href="{% url 'register:list' %}">list</a>
+      </li>
+    </nav>
+    <h1>Base Page</h1>
     {% block content %}
     {% endblock %}
+
   </body>
 </html>
