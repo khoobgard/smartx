@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Registered Devices</title>
-  </head>
-  <body>
-    <h1>Devices: </h1>
-    <h2>{{ inject }}</h2>
-    <p>{{ majid }}</p>
-  </body>
-</html>
+{% extends 'register/register_base' %}
+{% block content %}
+
+<h1>Welcome to list of Devices </h1>
+<ol>
+  {% for device in device_list %}
+    <h2><li>{{ device.name }}</li></h2>
+  {% endfor %}
+</ol>
+{% endblock %}

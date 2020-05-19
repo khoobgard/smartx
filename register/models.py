@@ -13,7 +13,7 @@ class Device(models.Model):
     name = models.CharField(max_length=200)
     type = models.CharField(max_length=300)
     code = models.IntegerField(unique=True)
-    master = models.ForeignKey(Master,on_delete=models.CASCADE)
+    master = models.ForeignKey(Master,related_name='device',on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

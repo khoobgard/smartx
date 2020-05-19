@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Register</title>
+  </head>
+  <body>
+    <h1>Register Your Devices</h1>
+    <li><a href="{% url register:list %}"></a></li>
+    <li><a href="{% url register:detail %}"></a></li>
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>
