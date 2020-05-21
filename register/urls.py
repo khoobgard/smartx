@@ -7,5 +7,6 @@ urlpatterns = [
     url(r'^$', views.DeviceListView.as_view(),name='list'),
     # url(r'^(?P<pk>[-\w]+)/$'), views.DeviceDetailView.as_view())
     path('<int:pk>/',views.DeviceDetailView.as_view()),
+    url(r'^form/$',views.form_name_view,name='form_name')
 
 ]
