@@ -23,8 +23,19 @@ class DeviceDetailView(DetailView):
     model = Device
     template_name = 'register/device_detail.html'
 
+def Index(request):
+    return render(request,'register/index.html')
+
 
 def form_name_view(request):
     form = forms.FormModelName()
+    if request.method == 'POST':
+        form = forms.FormModelName(request.POST)
 
-    return render(request,'register/form_page.html',{'form': form})
+        if form.is_valid:
+            form.save(commit=True)
+            return Index(request)
+        else:
+            print('ERROR')
+
+    return render(request,'register/device_list.html',{'form': form})
