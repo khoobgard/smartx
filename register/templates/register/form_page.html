@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>formpage</title>
-  </head>
-  <body>
+{% extends 'register/register_base.html'%}
+
+{% block content %}
     <h1>welcome to form page</h1>
     <form method="post">
       {{form.as_p }}
       {% csrf_token %}
 
-      <input type="submit" name="" value="S  hhubmit">
+      <input type="submit" name="" value="Submit">
     </form>
 
-
-  </body>
-</html>
+  {% endblock %}

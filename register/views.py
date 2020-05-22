@@ -26,14 +26,5 @@ class DeviceDetailView(DetailView):
 
 def form_name_view(request):
     form = forms.FormName()
-    if request.method == 'post':
-
-
-
-
-
-
-
-
 
     return render(request,'register/form_page.html',{'form': form})
