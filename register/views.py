@@ -25,6 +25,6 @@ class DeviceDetailView(DetailView):
 
 
 def form_name_view(request):
-    form = forms.FormName()
+    form = forms.FormModelName()
 
     return render(request,'register/form_page.html',{'form': form})

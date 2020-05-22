@@ -1,7 +1,8 @@
 from django import forms
+from register.models import Device
 
-class FormName(forms.Form):
-    name = forms.CharField()
-    email = forms.EmailField()
-    text = forms.CharField(widget=forms.Textarea)
-    botcatcher = forms.CharField(required = False , widget=forms.HiddenInput)
+class FormModelName(forms.ModelForm):
+    class Meta:
+
+        model = Device
+        fields = '__all__'
