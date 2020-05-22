@@ -38,4 +38,4 @@ def form_name_view(request):
         else:
             print('ERROR')
 
-    return render(request,'register/device_list.html',{'form': form})
+    return render(request,'register/form_page.html',{'form': form})
