@@ -27,7 +27,7 @@ def Index(request):
     return render(request,'register/index.html')
 
 
-def form_name_view(request):
+def form_device_view(request):
     form = forms.FormModelName()
     if request.method == 'POST':
         form = forms.FormModelName(request.POST)
@@ -38,7 +38,7 @@ def form_name_view(request):
         else:
             print('ERROR')
 
-    return render(request,'register/form_page.html',{'form': form})
+    return render(request,'register/form_device.html',{'form': form})
 
 def form_master_view(request):
     form1 = forms.FormModelMaster()
