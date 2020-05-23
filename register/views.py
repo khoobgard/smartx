@@ -39,3 +39,16 @@ def form_name_view(request):
             print('ERROR')
 
     return render(request,'register/form_page.html',{'form': form})
+
+def form_master_view(request):
+    form1 = forms.FormModelMaster()
+    if request.method == 'POST':
+        form1 = forms.FormModelMaster(request.POST)
+
+        if form.is_valid:
+            form1.save(commit=True)
+            return Index(request)
+        else:
+            print('ERROR')
+
+    return render(request,'register/form_master.html',{'form1': form1})

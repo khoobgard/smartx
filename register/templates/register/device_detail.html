@@ -1,6 +1,8 @@
 {% extends 'register/register_base.html' %}
 {% block content %}
  <h1>Details of devices: </h1>
-  <p>Name: {{ device_detail.name }}</p>
-  <p>Type: {{ device_detail.type }}</p>
+  <h3>Master: <span class='badge  badge-pill badge-primary'>{{ device_detail.master }}</span></h3>
+  <p>Name: <span class='badge badge-success'>{{ device_detail.name }}</span></p>
+  <p>Type: <span class='badge badge-info'>{{ device_detail.type }}</span></p>
+
 {% endblock %}
