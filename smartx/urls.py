@@ -20,8 +20,9 @@ from django.conf.urls.static import static
 from register.views import Index
 
 urlpatterns = [
+    url(r'^$',Index()),
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('register.urls'))
+    url(r'^setup/', include('register.urls'))
 
 
 ]

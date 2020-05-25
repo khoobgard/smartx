@@ -23,9 +23,19 @@ class DeviceDetailView(DetailView):
     model = Device
     template_name = 'register/device_detail.html'
 
-def Index(request):
+def index(request):
     return render(request,'register/index.html')
 
+def register(request):
+    registered = False
+    if request.method == 'POST':
+        user_form = forms.UserForm(data=request.POST)
+        profile_form = forms.UserProfileInfoForm(data=request.POST)
+
+        if user_form.is_valid() and profile_form():
+            user = user_form.save()
+            user.set_password(user.password)
+            user.save()
 
 def form_device_view(request):
     form = forms.FormModelName()
