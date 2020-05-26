@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 {% extends 'register/base.html' %}
 
 {% block content %}
@@ -6,11 +8,12 @@
   <h1>Thank you for registration.</h1>
   {% else %}
   <h1>Register Please Here</h1>
-  <h3>Fil Out this form :</h3>
+  <h3>Fill Out this form :</h3>
     <form method="post" enctype="multipart/form-data">
-      {% csrf_token %}
+
       {{ user_form.as_p }}
       {{ profile_form.as_p }}
+      {% csrf_token %}
       <input type="submit" value="Register">
     </form>
 

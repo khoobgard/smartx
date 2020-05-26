@@ -32,10 +32,30 @@ def register(request):
         user_form = forms.UserForm(data=request.POST)
         profile_form = forms.UserProfileInfoForm(data=request.POST)
 
-        if user_form.is_valid() and profile_form():
+        if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
             user.set_password(user.password)
             user.save()
+
+            profile = profile_form.save(commit=False)
+            profile_user = use
+
+            if 'profile_pic' in request.FILES:
+                profile.profile_pic = request.FILES('profile_pic')
+
+            profile.save()
+
+            registered = True
+        else:
+            print(user_form.errors,profile_form.errors)
+
+    else:
+        user_form = forms.UserForm()
+        profile_form = forms.UserProfileInfoForm()
+
+    return render(request, 'register/registration.html',context={'user_form':user_form,'profile_form':profile_form,'registered':registered})
+
+
 
 def form_device_view(request):
     form = forms.FormModelName()
@@ -44,7 +64,7 @@ def form_device_view(request):
 
         if form.is_valid:
             form.save(commit=True)
-            return Index(request)
+            return index(request)
         else:
             print('ERROR')
 
@@ -57,7 +77,7 @@ def form_master_view(request):
 
         if form.is_valid:
             form1.save(commit=True)
-            return Index(request)
+            return index(request)
         else:
             print('ERROR')
 

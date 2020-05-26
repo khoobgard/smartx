@@ -17,21 +17,21 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="{% url 'register:index'%}">DashBoard</a>
+    <a class="navbar-brand" href="{% url 'index'%}">DashBoard</a>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item ">
-          <a class="nav-link" href="{% url 'form_master'%}">Master <span class="sr-only"></span></a>
+          <a class="nav-link" href="{% url 'register:form_master'%}">Master <span class="sr-only"></span></a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="{% url 'form_device'%}">Devices <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{% url 'register:form_device'%}">Devices <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'list'%}">List</a>
+          <a class="nav-link" href="{% url 'register:list'%}">List</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="#"></a>
+          <a class="nav-link " href="{% url 'register:registration'%}">Register</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0" action="{% url 'admin:index' %}">
