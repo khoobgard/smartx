@@ -5,13 +5,6 @@ from django.utils import timezone
 from register import forms
 # Create your views here.
 
-# class DeviceView(TemplateView):
-#     template_name='register/device_list.html'
-#
-#     def get_context_data(self,**kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context = {'inject':timezone.now(),'majid':'salam'}
-#         return context
 
 class DeviceListView(ListView):
     context_object_name = 'devices'
@@ -40,10 +33,9 @@ def register(request):
             profile = profile_form.save(commit=False)
             profile_user = user
 
-            if 'profile_pic' in request.FILES:
-                profile.profile_pic = request.FILES('profile_pic')
-
-            profile.save()
+            if 'profile_pics' in request.FILES:
+                profile.profile_pics = request.FILES.getlist('profile_pics')
+                profile.save()
 
             registered = True
         else:
