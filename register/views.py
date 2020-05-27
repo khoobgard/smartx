@@ -6,7 +6,7 @@ from register import forms
 
 from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponseRedirect , HttpResponse
-from django.core.urlresolver import reverse
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
 
@@ -30,7 +30,7 @@ def special(request):
 
 @login_required
 def user_logout(request):
-    logout()
+    logout(request)
     return HttpResponseRedirect(reverse('index'))
 
 def register(request):
@@ -63,6 +63,8 @@ def register(request):
     return render(request, 'register/registration.html',context={'user_form':user_form,'profile_form':profile_form,'registered':registered})
 
 
+
+# LOGIN
 def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -73,7 +75,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request,user)
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse('index'),{'user':username})
             else:
                 HttpResponse("account not active")
 
@@ -83,7 +85,7 @@ def user_login(request):
             return HttpResponse("invalid login details supplied")
 
     else:
-        return render(request,'register/login.html',{})
+        return render(request,'register/login.html')
 
 
 

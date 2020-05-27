@@ -3,4 +3,7 @@
 
 {% block content %}
 <h1>Welcom to SmartX </h1>
+{% if user.is_active %}
+{{ user }}
+{% endif %}
 {% endblock %}
