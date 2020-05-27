@@ -10,7 +10,9 @@ urlpatterns = [
     path('list/<int:pk>/',views.DeviceDetailView.as_view()),
     url(r'^device/$',views.form_device_view,name='form_device'),
     url(r'^master/$',views.form_master_view,name='form_master'),
-    url(r'^register/$',views.register,name='registration')
+    url(r'^register/$',views.register,name='registration'),
+    url(r'^user_login/$',views.user_login, name='user_login'),
+
 
 
 

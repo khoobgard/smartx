@@ -34,10 +34,19 @@
           <a class="nav-link " href="{% url 'register:registration'%}">Register</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0" action="{% url 'admin:index' %}">
+      {% if user.is_authenticated %}
+      <form class="form-inline my-2 my-lg-0" action="{% url 'logout' %}">
         <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log In</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log Out</button>
       </form>
+      {% else %}
+      <form class="form-inline my-2 my-lg-0" action="{% url 'register:user_login' %}">
+        <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Log In</button>
+      </form>
+
+
+      {% endif %}
     </div>
   </nav>
 

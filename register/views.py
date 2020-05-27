@@ -3,7 +3,11 @@ from register.models import Device
 from django.views.generic import TemplateView,ListView,DetailView
 from django.utils import timezone
 from register import forms
-# Create your views here.
+
+from django.contrib.auth import authenticate,login,logout
+from django.http import HttpResponseRedirect , HttpResponse
+from django.core.urlresolver import reverse
+from django.contrib.auth.decorators import login_required
 
 
 class DeviceListView(ListView):
@@ -18,6 +22,16 @@ class DeviceDetailView(DetailView):
 
 def index(request):
     return render(request,'register/index.html')
+
+@login_required
+def special(request):
+    return HttpResponse("you are loggedin , nice!")
+
+
+@login_required
+def user_logout(request):
+    logout()
+    return HttpResponseRedirect(reverse('index'))
 
 def register(request):
     registered = False
@@ -47,6 +61,35 @@ def register(request):
         profile_form = forms.UserProfileInfoForm()
 
     return render(request, 'register/registration.html',context={'user_form':user_form,'profile_form':profile_form,'registered':registered})
+
+
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username,password=password)
+
+        if user:
+            if user.is_active:
+                login(request,user)
+                return HttpResponseRedirect(reverse('index'))
+            else:
+                HttpResponse("account not active")
+
+        else:
+            print("someone tried to login but failed")
+            print("username : {} , password : {} ".format(username,password))
+            return HttpResponse("invalid login details supplied")
+
+    else:
+        return render(request,'register/login.html',{})
+
+
+
+
+
+
 
 
 
