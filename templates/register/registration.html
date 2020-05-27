@@ -10,14 +10,14 @@
   <h1>Register Please Here</h1>
   <h3>Fill Out this form :</h3>
     <form method="post" enctype="multipart/form-data">
-
+      {% csrf_token %}
       {{ user_form.as_p }}
       {{ profile_form.as_p }}
-      {% csrf_token %}
+
       <input type="submit" value="Register">
     </form>
 
-  {% endif %}
+    {% endif %}
 
 </div>
 {% endblock %}

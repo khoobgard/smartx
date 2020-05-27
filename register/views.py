@@ -31,11 +31,12 @@ def register(request):
             user.save()
 
             profile = profile_form.save(commit=False)
-            profile_user = user
+            profile.user = user
 
             if 'profile_pics' in request.FILES:
-                profile.profile_pics = request.FILES.getlist('profile_pics')
-                profile.save()
+                profile.profile_pics = request.FILES.get('profile_pics')
+
+            profile.save()
 
             registered = True
         else:
