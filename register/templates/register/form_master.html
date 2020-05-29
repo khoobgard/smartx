@@ -1,6 +1,7 @@
 {% extends 'register/base.html'%}
 
 {% block content %}
+{% if user.is_active %}
     <h1>Register your master Here </h1>
     <form method="post">
       {{form1.as_p }}
@@ -9,4 +10,10 @@
       <input type="submit" class="btn btn-info" value="Submit">
 
     </form>
+
+
+
+  {% else %}
+  <h3>You have to log in to setup a master</h3>
+  {% endif %}
   {% endblock %}

@@ -9,11 +9,11 @@ from django.http import HttpResponseRedirect , HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
-
 class DeviceListView(ListView):
     context_object_name = 'devices'
     model = Device
     template_name = 'register/device_list.html'
+
 
 class DeviceDetailView(DetailView):
     context_object_name = 'device_detail'
@@ -107,6 +107,7 @@ def form_device_view(request):
             print('ERROR')
 
     return render(request,'register/form_device.html',{'form': form})
+
 
 def form_master_view(request):
     form1 = forms.FormModelMaster()
