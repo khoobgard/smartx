@@ -91,10 +91,6 @@ def user_login(request):
 
 
 
-
-
-
-
 def form_device_view(request):
     form = forms.FormModelName()
     if request.method == 'POST':
