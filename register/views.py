@@ -10,7 +10,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
 class VehicleListView(ListView):
-    context_object_name = 'devices'
+    context_object_name = 'vehicles'
     model = Vehicle
     template_name = 'register/vehicle_list.html'
 

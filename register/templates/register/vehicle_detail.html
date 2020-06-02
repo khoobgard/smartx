@@ -1,8 +1,11 @@
 {% extends 'register/base.html' %}
 {% block content %}
  <h1>Details of vehicles : </h1>
-  <h3>Master: <span class='badge  badge-pill badge-primary'>{{ vehicle_detail.master }}</span></h3>
-  <p>Name: <span class='badge badge-success'>{{ vehicle_detail.name }}</span></p>
+  <h3>Name : <span class='badge  badge-pill badge-primary'>{{ vehicle_detail.name }}</span></h3>
+  <p>Code: <span class='badge badge-success'>{{ vehicle_detail.code }}</span></p>
   <p>Type: <span class='badge badge-info'>{{ vehicle_detail.type }}</span></p>
+  <p>model: <span class='badge badge-danger'>{{ vehicle_detail.model }}</span></p>
+  <p>status: <span class='badge badge-primary'>{{ vehicle_detail.get_status_display }}</span></p>
+
 
 {% endblock %}
