@@ -3,8 +3,8 @@
 
 <h1>List of Devices </h1>
 <ol>
-  {% for device in devices %}
-    <h2><li><a href="{{ device.id }}">{{ device.name }}</a></li></h2>
+  {% for vehicle in vehicles %}
+    <h2><li><a href="{{ vehicle.id }}">{{ vehicle.name }}</a></li></h2>
   {% endfor %}
 </ol>
 {% endblock %}

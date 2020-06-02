@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from register.models import Device
+from register.models import Vehicle
 from django.views.generic import TemplateView,ListView,DetailView
 from django.utils import timezone
 from register import forms
@@ -9,16 +9,16 @@ from django.http import HttpResponseRedirect , HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
-class DeviceListView(ListView):
+class VehicleListView(ListView):
     context_object_name = 'devices'
-    model = Device
-    template_name = 'register/device_list.html'
+    model = Vehicle
+    template_name = 'register/vehicle_list.html'
 
 
-class DeviceDetailView(DetailView):
-    context_object_name = 'device_detail'
-    model = Device
-    template_name = 'register/device_detail.html'
+class VehicleDetailView(DetailView):
+    context_object_name = 'vehicle_detail'
+    model = Vehicle
+    template_name = 'register/vehicle_detail.html'
 
 def index(request):
     return render(request,'register/index.html')
@@ -91,7 +91,7 @@ def user_login(request):
 
 
 
-def form_device_view(request):
+def form_vehicle_view(request):
     form = forms.FormModelName()
     if request.method == 'POST':
         form = forms.FormModelName(request.POST)
@@ -102,7 +102,7 @@ def form_device_view(request):
         else:
             print('ERROR')
 
-    return render(request,'register/form_device.html',{'form': form})
+    return render(request,'register/form_vehicle.html',{'form': form})
 
 
 def form_master_view(request):
@@ -110,7 +110,7 @@ def form_master_view(request):
     if request.method == 'POST':
         form1 = forms.FormModelMaster(request.POST)
 
-        if form.is_valid:
+        if form1.is_valid:
             form1.save(commit=True)
             return index(request)
         else:

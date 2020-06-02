@@ -1,0 +1,8 @@
+{% extends 'register/base.html' %}
+{% block content %}
+ <h1>Details of vehicles : </h1>
+  <h3>Master: <span class='badge  badge-pill badge-primary'>{{ vehicle_detail.master }}</span></h3>
+  <p>Name: <span class='badge badge-success'>{{ vehicle_detail.name }}</span></p>
+  <p>Type: <span class='badge badge-info'>{{ vehicle_detail.type }}</span></p>
+
+{% endblock %}

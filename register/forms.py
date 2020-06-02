@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from register.models import UserProfileInfo
-from register.models import Device,Master
+from register.models import Vehicle,Master
 # from captcha.fields import ReCaptchaField
 # from captcha.widgets import ReCaptchaV2Invisible
 
@@ -30,7 +30,7 @@ class UserProfileInfoForm(forms.ModelForm):
 class FormModelName(forms.ModelForm):
     class Meta():
 
-        model = Device
+        model = Vehicle
         fields = '__all__'
 
 class FormModelMaster(forms.ModelForm):
