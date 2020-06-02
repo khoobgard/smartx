@@ -4,6 +4,9 @@
 {% block content %}
 <h1>Welcom to SmartX </h1>
 {% if user.is_active %}
-{{ user }}
+
+<p>{{ user }}</p>
+<p>{{ message }} is not in service!</p>
+<a href="{% url 'rent_vehicle'%}">rent</a>
 {% endif %}
 {% endblock %}

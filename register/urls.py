@@ -13,6 +13,4 @@ urlpatterns = [
     url(r'^register/$',views.register,name='registration'),
 
 
-
-
 ]

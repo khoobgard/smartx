@@ -1,0 +1,18 @@
+{% extends 'register/base.html'%}
+
+{% block content %}
+{% if user.is_superuser %}
+
+    <form method="post" name="code">
+      {{form.as_p }}
+      {% csrf_token %}
+
+      <input type="submit" class="btn btn-primary" value="Rent">
+
+    </form>
+
+
+    {% else %}
+    <h3>You have to log in to rent a vehicle</h3>
+    {% endif %}
+  {% endblock %}

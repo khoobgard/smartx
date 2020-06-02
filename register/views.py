@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from register.models import Vehicle
 from django.views.generic import TemplateView,ListView,DetailView
-from django.utils import timezone
+from django.utils import timezone 
 from register import forms
 
 from django.contrib.auth import authenticate,login,logout
@@ -21,11 +21,32 @@ class VehicleDetailView(DetailView):
     template_name = 'register/vehicle_detail.html'
 
 def index(request):
-    return render(request,'register/index.html')
+    my_vehicle = Vehicle.objects.get(name='bike2')
+    return render(request,'register/index.html',context={"vehicle":my_vehicle})
 
 @login_required
-def special(request):
-    return HttpResponse("you are loggedin , nice!")
+def form_rent_view(request):
+    form_rent = forms.FormModelRent()
+    if request.method == 'POST':
+        form_rent = forms.FormModelRent(request.POST)
+
+        if form_rent.is_valid:
+            your_bike = request.POST["code"]
+
+            my_bike = Vehicle.objects.get(code=int(your_bike))
+
+            if my_bike.status == 'r':
+                return render(request,'register/dashboard.html',
+                        context={"myvehicle":my_bike,'time':timezone.now })
+            else:
+                return render(request,'register/index.html',
+                        context={"message":my_bike})
+
+
+        else:
+            print('ERROR')
+
+    return render(request,'register/rent_vehicle.html',{'form': form_rent})
 
 
 @login_required

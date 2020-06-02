@@ -1,0 +1,20 @@
+{% extends 'register/base.html' %}
+{% block content %}
+{% if user.is_active %}
+<h3>Time: {{ time }}</h3>
+<h1>You are hiring this bicycle : </h1>
+<h3><span class='badge badge-info'>{{ myvehicle }}</h3>
+
+
+ <h1>Details of vehicles : </h1>
+  <h3>Name : <span class='badge  badge-pill badge-primary'>{{ vehicle_detail.name }}</span></h3>
+  <p>Code: <span class='badge badge-success'>{{ myvehicle.code }}</span></p>
+  <p>Type: <span class='badge badge-info'>{{ myvehicle.type }}</span></p>
+  <p>model: <span class='badge badge-danger'>{{ myvehicle.model }}</span></p>
+  <p>status: <span class='badge badge-primary'>{{ myvehicle.get_status_display }}</span></p>
+
+  {% else %}
+  <p>you have to login first</p>
+{% endif %}
+
+{% endblock %}

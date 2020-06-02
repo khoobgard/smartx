@@ -38,3 +38,10 @@ class FormModelMaster(forms.ModelForm):
 
         model = Master
         fields = '__all__'
+
+
+class FormModelRent(forms.ModelForm):
+    class Meta():
+
+        model = Vehicle
+        fields = ['code']
