@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from register.models import Vehicle
 from django.views.generic import TemplateView,ListView,DetailView
-from django.utils import timezone 
+from django.utils import timezone
 from register import forms
 
 from django.contrib.auth import authenticate,login,logout
@@ -36,11 +36,14 @@ def form_rent_view(request):
             my_bike = Vehicle.objects.get(code=int(your_bike))
 
             if my_bike.status == 'r':
+                my_bike.status = 's'
+                my_bike.save()
+
                 return render(request,'register/dashboard.html',
                         context={"myvehicle":my_bike,'time':timezone.now })
             else:
                 return render(request,'register/index.html',
-                        context={"message":my_bike})
+                        context={"bike":my_bike,"message":"is not in service"})
 
 
         else:

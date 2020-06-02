@@ -1,9 +1,10 @@
 {% extends 'register/base.html' %}
 {% block content %}
 {% if user.is_active %}
-<h3>Time: {{ time }}</h3>
+<h3>{{ time }}</h3>
 <h1>You are hiring this bicycle : </h1>
 <h3><span class='badge badge-info'>{{ myvehicle }}</h3>
+  <p> please push the red button in front of the bicycle</p>
 
 
  <h1>Details of vehicles : </h1>
