@@ -42,7 +42,7 @@ def form_rent_view(request):
                 return render(request,'register/dashboard.html',
                         context={"myvehicle":my_bike,'time':timezone.now })
             else:
-                return render(request,'register/index.html',
+                return render(request,'register/dashboard.html',
                         context={"bike":my_bike,"message":"is not in service"})
 
 
