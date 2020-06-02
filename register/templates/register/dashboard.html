@@ -1,20 +1,26 @@
 {% extends 'register/base.html' %}
 {% block content %}
 {% if user.is_active %}
+  {% if status == 'r'%}
 <h3>{{ time }}</h3>
 <h1>You are hiring this bicycle : </h1>
 <h3><span class='badge badge-info'>{{ myvehicle }}</h3>
   <p> <span class='badge badge-danger'> please push the red button in front of the bicycle</p>
-  <p>{{ bike }} {{ message }}</p>
 
  <h1>Details of vehicles : </h1>
-  <h3>Name : <span class='badge  badge-pill badge-primary'>{{ vehicle_detail.name }}</span></h3>
+  <h3>Name : <span class='badge  badge-pill badge-primary'>{{ mybike.name }}</span></h3>
   <p>Code: <span class='badge badge-success'>{{ myvehicle.code }}</span></p>
   <p>Type: <span class='badge badge-info'>{{ myvehicle.type }}</span></p>
   <p>model: <span class='badge badge-danger'>{{ myvehicle.model }}</span></p>
   <p>status: <span class='badge badge-primary'>{{ myvehicle.get_status_display }}</span></p>
-
+  {% elif status == 'o'%}
+  <p>this bike is out of service now </p>
   {% else %}
+  <p>{{ bike }} {{ message }}</p>
+  <a href="{% url 'rent_vehicle'%}">Rent another bicycle </a>
+  {% endif %}
+
+{% else %}
   <p>you have to login first</p>
 {% endif %}
 

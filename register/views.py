@@ -21,8 +21,8 @@ class VehicleDetailView(DetailView):
     template_name = 'register/vehicle_detail.html'
 
 def index(request):
-    my_vehicle = Vehicle.objects.get(name='bike2')
-    return render(request,'register/index.html',context={"vehicle":my_vehicle})
+
+    return render(request,'register/index.html')
 
 @login_required
 def form_rent_view(request):
@@ -34,16 +34,17 @@ def form_rent_view(request):
             your_bike = request.POST["code"]
 
             my_bike = Vehicle.objects.get(code=int(your_bike))
+            my_bike_status = my_bike.status
 
             if my_bike.status == 'r':
                 my_bike.status = 's'
                 my_bike.save()
 
                 return render(request,'register/dashboard.html',
-                        context={"myvehicle":my_bike,'time':timezone.now })
+                        context={"bike":my_bike,"status":my_bike_status,'time':timezone.now })
             else:
                 return render(request,'register/dashboard.html',
-                        context={"bike":my_bike,"message":"is not in service"})
+                        context={"bike":my_bike,"status":my_bike_status,"message":"is not in service"})
 
 
         else:

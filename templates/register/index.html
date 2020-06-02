@@ -6,7 +6,7 @@
 {% if user.is_active %}
 
 <p>{{ user }}</p>
-<p>{{ bike }} {{ message }}</p>
+
 <a href="{% url 'rent_vehicle'%}">rent</a>
 {% endif %}
 {% endblock %}
