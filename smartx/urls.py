@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^login/$',views.user_login, name='user_login'),
     url(r'^logout/$',views.user_logout , name='logout'),
     url(r'^rent/$',views.form_rent_view , name='rent_vehicle'),
+    url(r'^dashboard/$',views.form_rent_view , name='dashboard'),
 
 
 

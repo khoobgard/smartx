@@ -3,18 +3,26 @@
 {% if user.is_active %}
   {% if status == 'r'%}
 <h3>{{ time }}</h3>
-<h1>You are hiring this bicycle : </h1>
+<h2>You are hiring this bicycle : </h2>
 <h3><span class='badge badge-info'>{{ myvehicle }}</h3>
-  <p> <span class='badge badge-danger'> please push the red button in front of the bicycle</p>
+  <h1>  please push the<span class='badge badge-danger'> red button </span>in front of the bicycle</h1>
 
- <h1>Details of vehicles : </h1>
-  <h3>Name : <span class='badge  badge-pill badge-primary'>{{ mybike.name }}</span></h3>
-  <p>Code: <span class='badge badge-success'>{{ myvehicle.code }}</span></p>
-  <p>Type: <span class='badge badge-info'>{{ myvehicle.type }}</span></p>
-  <p>model: <span class='badge badge-danger'>{{ myvehicle.model }}</span></p>
-  <p>status: <span class='badge badge-primary'>{{ myvehicle.get_status_display }}</span></p>
+ <h3>Details of vehicles : </h3>
+  <h3>Name : <span class='badge  badge-pill badge-primary'>{{ bike.name }}</span></h3>
+  <p>Code: <span class='badge badge-success'>{{ bike.code }}</span></p>
+  <p>Type: <span class='badge badge-info'>{{ bike.type }}</span></p>
+  <p>model: <span class='badge badge-danger'>{{ bike.model }}</span></p>
+  <p>status: <span class='badge badge-primary'>{{ bike.get_status_display }}</span></p>
+
+  <h4>you can reserve your bike temporary</h4>
+  <a href="{% url 'dashboard'%}">reserve this bike </a>
+
   {% elif status == 'o'%}
   <p>this bike is out of service now </p>
+  {% elif status == 'b' %}
+  <h4>Continue your running of this bike</h4>
+  <a href="{% url 'dashboard'%}">continue </a>
+
   {% else %}
   <p>{{ bike }} {{ message }}</p>
   <a href="{% url 'rent_vehicle'%}">Rent another bicycle </a>
