@@ -37,15 +37,15 @@ def form_rent_view(request):
             my_bike_status = my_bike.status
 
             if my_bike.status == 'r':
-                my_bike.status = 's'
-                my_bike.save()
+                    my_bike.status = 's'
+                    my_bike.save()
 
                 return render(request,'register/dashboard.html',
                         context={"bike":my_bike,"status":my_bike_status,'time':timezone.now })
 
-            if my_bike.status == 's':
-                my_bike.status = 'b'
-                my_bike.save()
+            elif my_bike.status == 's':
+                    my_bike.status = 'b'
+                    my_bike.save()
 
                 return render(request,'register/dashboard.html',
                         context={"bike":my_bike,"status":my_bike_status,'time':timezone.now })
