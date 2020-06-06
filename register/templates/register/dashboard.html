@@ -1,7 +1,7 @@
 {% extends 'register/base.html' %}
 {% block content %}
 {% if user.is_active %}
-  {% if status == 'r'%}
+  {% if status == 'r' %}
 <h3>{{ time }}</h3>
 <h2>You are hiring this bicycle : </h2>
 <h3><span class='badge badge-info'>{{ myvehicle }}</h3>
@@ -13,11 +13,11 @@
   <p>Type: <span class='badge badge-info'>{{ bike.type }}</span></p>
   <p>model: <span class='badge badge-danger'>{{ bike.model }}</span></p>
   <p>status: <span class='badge badge-primary'>{{ bike.get_status_display }}</span></p>
-
+  {% elif status == 's'%}
   <h4>you can reserve your bike temporary</h4>
   <a href="{% url 'dashboard'%}">reserve this bike </a>
 
-  {% elif status == 'o'%}
+  {% elif status == 'o' %}
   <p>this bike is out of service now </p>
   {% elif status == 'b' %}
   <h4>Continue your running of this bike</h4>
