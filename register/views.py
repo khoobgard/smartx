@@ -54,7 +54,7 @@ def form_rent_view(request):
                             context={"bike":my_bike,"status":my_bike_status,"message":"is not in service"})
 
 
-        else:
+    else:
             print('ERROR')
 
     return render(request,'register/rent_vehicle.html',{'form': form_rent})

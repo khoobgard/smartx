@@ -13,23 +13,23 @@
   <p>Type: <span class='badge badge-info'>{{ bike.type }}</span></p>
   <p>model: <span class='badge badge-danger'>{{ bike.model }}</span></p>
   <p>status: <span class='badge badge-primary'>{{ bike.get_status_display }}</span></p>
-  {% elif status == 's'%}
+    {% elif status == 's' %}
   <h4>you can reserve your bike temporary</h4>
   <a href="{% url 'dashboard'%}">reserve this bike </a>
 
-  {% elif status == 'o' %}
+    {% elif status == 'o' %}
   <p>this bike is out of service now </p>
-  {% elif status == 'b' %}
+    {% elif status == 'b' %}
   <h4>Continue your running of this bike</h4>
   <a href="{% url 'dashboard'%}">continue </a>
 
-  {% else %}
+    {% else %}
   <p>{{ bike }} {{ message }}</p>
   <a href="{% url 'rent_vehicle'%}">Rent another bicycle </a>
   {% endif %}
 
-{% else %}
+  {% else %}
   <p>you have to login first</p>
-{% endif %}
+  {% endif %}
 
-{% endblock %}
+  {% endblock %}
