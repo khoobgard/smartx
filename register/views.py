@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from register.models import Vehicle
 from django.views.generic import TemplateView,ListView,DetailView
 from django.utils import timezone
 from register import forms
@@ -9,55 +8,10 @@ from django.http import HttpResponseRedirect , HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
-class VehicleListView(ListView):
-    context_object_name = 'vehicles'
-    model = Vehicle
-    template_name = 'register/vehicle_list.html'
-
-
-class VehicleDetailView(DetailView):
-    context_object_name = 'vehicle_detail'
-    model = Vehicle
-    template_name = 'register/vehicle_detail.html'
 
 def index(request):
 
     return render(request,'register/index.html')
-
-@login_required
-def form_rent_view(request):
-    form_rent = forms.FormModelRent()
-    if request.method == 'POST':
-        form_rent = forms.FormModelRent(request.POST)
-
-        if form_rent.is_valid:
-            your_bike = request.POST["code"]
-
-            my_bike = Vehicle.objects.get(code=int(your_bike))
-            my_bike_status = my_bike.status
-
-            if my_bike.status == 'r':
-                my_bike.status = 's'
-                my_bike.save()
-
-                return render(request,'register/dashboard.html',
-                context={"bike":my_bike,"status":my_bike_status,'time':timezone.now })
-
-            elif my_bike.status == 's':
-                my_bike.status = 'b'
-                my_bike.save()
-
-            return render(request,'register/dashboard.html',
-                            context={"bike":my_bike,"status":my_bike_status,'time':timezone.now })
-        else:
-                    return render(request,'register/dashboard.html',
-                            context={"bike":my_bike,"status":my_bike_status,"message":"is not in service"})
-
-
-    else:
-            print('ERROR')
-
-    return render(request,'register/rent_vehicle.html',{'form': form_rent})
 
 
 @login_required
@@ -118,34 +72,3 @@ def user_login(request):
 
     else:
         return render(request,'register/login.html')
-
-
-
-
-
-def form_vehicle_view(request):
-    form = forms.FormModelName()
-    if request.method == 'POST':
-        form = forms.FormModelName(request.POST)
-
-        if form.is_valid:
-            form.save(commit=True)
-            return index(request)
-        else:
-            print('ERROR')
-
-    return render(request,'register/form_vehicle.html',{'form': form})
-
-
-def form_master_view(request):
-    form1 = forms.FormModelMaster()
-    if request.method == 'POST':
-        form1 = forms.FormModelMaster(request.POST)
-
-        if form1.is_valid:
-            form1.save(commit=True)
-            return index(request)
-        else:
-            print('ERROR')
-
-    return render(request,'register/form_master.html',{'form1': form1})

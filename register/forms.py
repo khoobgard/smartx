@@ -27,19 +27,6 @@ class UserProfileInfoForm(forms.ModelForm):
 
 
 
-class FormModelName(forms.ModelForm):
-    class Meta():
-
-        model = Vehicle
-        fields = '__all__'
-
-class FormModelMaster(forms.ModelForm):
-    class Meta():
-
-        model = Master
-        fields = '__all__'
-
-
 class FormModelRent(forms.ModelForm):
     class Meta():
 
