@@ -17,16 +17,15 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from register import views
+from rent import views
 
 urlpatterns = [
     url(r'^$',views.index,name='index'),
     url(r'^admin/', admin.site.urls),
-    url(r'^setup/', include('register.urls')),
+    url(r'^setup/', include('vehicles.urls')),
     url(r'^login/$',views.user_login, name='user_login'),
     url(r'^logout/$',views.user_logout , name='logout'),
-    url(r'^rent/$',views.form_rent_view , name='rent_vehicle'),
-    url(r'^dashboard/$',views.form_rent_view , name='dashboard'),
+    url(r'^rent/', include('rent.urls')),
 
 
 
