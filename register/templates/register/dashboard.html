@@ -5,7 +5,7 @@
 <h3>{{ time }}</h3>
 <h2>You are hiring this bicycle : </h2>
 <h3><span class='badge badge-info'>{{ myvehicle }}</h3>
-  <h1>  please push the<span class='badge badge-danger'> red button </span>in front of the bicycle</h1>
+  <h1>  please push the<span class='badge badge-danger'> Red Button </span>in front of the bicycle</h1>
 
  <h3>Details of vehicles : </h3>
   <h3>Name : <span class='badge  badge-pill badge-primary'>{{ bike.name }}</span></h3>
@@ -19,17 +19,21 @@
 
     {% elif status == 'o' %}
   <p>this bike is out of service now </p>
+
     {% elif status == 'b' %}
   <h4>Continue your running of this bike</h4>
-  <a href="{% url 'dashboard'%}">continue </a>
+
 
     {% else %}
   <p>{{ bike }} {{ message }}</p>
-  <a href="{% url 'rent_vehicle'%}">Rent another bicycle </a>
+
+
   {% endif %}
 
   {% else %}
   <p>you have to login first</p>
+  <a href="{% url 'login' %}"> Log In</a>
+
   {% endif %}
 
   {% endblock %}

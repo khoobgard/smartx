@@ -4,17 +4,18 @@
 {% if user.is_active %}
 
     <form method="post" name="code">
-      {{form.as_p }}
+      {{form_rent.as_p }}
       {% csrf_token %}
 
       <input type="submit" class="btn btn-primary" value="Rent">
 
-      
+
 
     </form>
 
 
     {% else %}
     <h3>You have to log in to rent a vehicle</h3>
+    <a href="{% url 'login' %}"> Log In</a>
     {% endif %}
   {% endblock %}

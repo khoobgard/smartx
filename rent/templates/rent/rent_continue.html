@@ -1,0 +1,8 @@
+{% extends 'register/base.html' %}
+
+{% block content %}
+  <h2>you ar usin your bike</h2>
+  <h3>To finish using this bike  please click this link</h3>
+
+  <a href="{% url 'rent:rent_finish'%}"></a>
+{% end block %}
