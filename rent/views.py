@@ -10,7 +10,7 @@ def index(request):
     return render(request,'register/index.html')
 
 class Rent(View):
-    
+
     @login_required
     def rent_request(self,request):
         form_rent = forms.FormModelRent()

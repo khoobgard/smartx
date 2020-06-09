@@ -19,7 +19,7 @@ def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
 
-def register(request):
+def signup(request):
     registered = False
     if request.method == 'POST':
         user_form = forms.UserForm(data=request.POST)
