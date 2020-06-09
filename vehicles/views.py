@@ -20,11 +20,11 @@ class VehicleDetailView(DetailView):
     template_name = 'register/vehicle_detail.html'
 
 
-
+@login_required
 def form_vehicle_view(request):
-    form = forms.FormModelName()
+    form = forms.FormModelVehicle()
     if request.method == 'POST':
-        form = forms.FormModelName(request.POST)
+        form = forms.FormModelVehicle(request.POST)
 
         if form.is_valid:
             form.save(commit=True)
@@ -34,7 +34,7 @@ def form_vehicle_view(request):
 
     return render(request,'register/form_vehicle.html',{'form': form})
 
-
+@login_required
 def form_master_view(request):
     form1 = forms.FormModelMaster()
     if request.method == 'POST':

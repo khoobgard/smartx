@@ -1,6 +1,6 @@
 from vehicles.models import Vehicle , Master
 
-class FormModelName(forms.ModelForm):
+class FormModelVehicle(forms.ModelForm):
     class Meta():
 
         model = Vehicle
