@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from register.models import UserProfileInfo
-from register.models import Vehicle,Master
+from vehicles.models import Vehicle,Master
 # from captcha.fields import ReCaptchaField
 # from captcha.widgets import ReCaptchaV2Invisible
 

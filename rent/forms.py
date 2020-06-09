@@ -1,3 +1,4 @@
+from django import forms
 from vehicles.models import Vehicle
 
 class FormModelRent(forms.ModelForm):

@@ -1,5 +1,6 @@
 from django.contrib import admin
-from register.models import Vehicle,Master,UserProfileInfo
+from vehicles.models import Vehicle,Master
+from register.models import UserProfileInfo
 
 # Register your models here.
 admin.site.register(UserProfileInfo)

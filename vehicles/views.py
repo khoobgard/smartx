@@ -3,7 +3,6 @@ from vehicles.models import Vehicle
 from django.views.generic import TemplateView,ListView,DetailView
 from django.utils import timezone
 from vehicles import forms
-
 from django.http import HttpResponseRedirect , HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
