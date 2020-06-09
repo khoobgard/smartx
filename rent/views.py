@@ -1,32 +1,38 @@
 from django.shortcuts import render
+from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from vehicles.models import Vehicle
 
 # Create your views here.
 class Rent():
 
-@login_required
-def rent_request(request):
-    form_rent = forms.FormModelRent()
-    if request.method == 'POST' and form_rent.is_valid:
-        form_rent = forms.FormModelRent(request.POST)
-
-        your_bike = request.POST["code"]
-
-
-        return render(request,'register/dashboard.html',
-                context={"bike":my_bike,"status":my_bike_status,'time':timezone.now })
+    @login_required
+    def rent_request(request):
+        form_rent = forms.FormModelRent()
+        if request.method == 'POST' and form_rent.is_valid:
+            form_rent = forms.FormModelRent(request.POST)
+            bike_code = request.POST["code"]
+            bike = Vehicle.objects.all().filter(code=bike_code)
+            my_bike_status = bike.status
 
 
-        
-    else:
-            print('ERROR')
+            return render(request,'register/dashboard.html',
+                    context={"bike":bike_code,"status":my_bike_status,'time':timezone.now })
 
-    return render(request,'register/rent_vehicle.html',{'form': form_rent})
 
-def rent_pause(request):
-    if my_bike.status == 's':
-        my_bike.status = 'b'
-        my_bike.save()
+        else:
+                print('ERROR')
 
-def rent_finish(request):
-    pass
+        return render(request,'register/rent_vehicle.html',{'form': form_rent})
+
+
+    @login_required
+    def rent_pause(request):
+        if my_bike.status == 's':
+            my_bike.status = 'b'
+            my_bike.save()
+
+
+    @login_required
+    def rent_finish(request):
+        pass
