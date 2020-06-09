@@ -6,7 +6,6 @@ from register.models import Vehicle,Master
 # from captcha.widgets import ReCaptchaV2Invisible
 
 
-
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
 
@@ -20,15 +19,8 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('username','email','password')
 
+
 class UserProfileInfoForm(forms.ModelForm):
     class Meta():
         model = UserProfileInfo
         fields = ('portfolio_site','profile_pics')
-
-
-
-class FormModelRent(forms.ModelForm):
-    class Meta():
-
-        model = Vehicle
-        fields = ['code']
