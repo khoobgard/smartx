@@ -39,7 +39,7 @@ def rent_request(request):
     else:
         print('ERROR')
 
-        return render(request,'rent/rent_vehicle.html',{'form_rent': form_rent})
+    return render(request,'rent/rent_vehicle.html',{'form_rent': form_rent})
 
 
 @login_required
