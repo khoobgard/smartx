@@ -10,13 +10,13 @@ from django.contrib.auth.decorators import login_required
 class VehicleListView(ListView):
     context_object_name = 'vehicles'
     model = Vehicle
-    template_name = 'register/vehicle_list.html'
+    template_name = 'vehicles/vehicle_list.html'
 
 
 class VehicleDetailView(DetailView):
     context_object_name = 'vehicle_detail'
     model = Vehicle
-    template_name = 'register/vehicle_detail.html'
+    template_name = 'vehicles/vehicle_detail.html'
 
 
 @login_required
@@ -31,7 +31,7 @@ def form_vehicle_view(request):
         else:
             print('ERROR')
 
-    return render(request,'register/form_vehicle.html',{'form': form})
+    return render(request,'vehicles/form_vehicle.html',{'form': form})
 
 @login_required
 def form_master_view(request):
@@ -45,4 +45,4 @@ def form_master_view(request):
         else:
             print('ERROR')
 
-    return render(request,'register/form_master.html',{'form1': form1})
+    return render(request,'vehicles/form_master.html',{'form1': form1})
