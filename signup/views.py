@@ -7,6 +7,8 @@ from django.http import HttpResponseRedirect , HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
+def index(request):
+    return render(request,'signup/index.html')
 
 
 @login_required
@@ -68,8 +70,3 @@ def user_login(request):
 
     else:
         return render(request,'signup/login.html')
-
-
-
-def index(request):
-    return render(request,'signup/index.html')
