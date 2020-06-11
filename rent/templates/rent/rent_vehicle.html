@@ -9,13 +9,10 @@
 
       <input type="submit" class="btn btn-primary" value="Rent">
 
-
-
     </form>
-
 
     {% else %}
     <h3>You have to log in to rent a vehicle</h3>
     <a href="{% url 'login' %}"> Log In</a>
     {% endif %}
-  {% endblock %}
+{% endblock %}

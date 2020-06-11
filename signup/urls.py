@@ -10,7 +10,7 @@ urlpatterns = [
     path('<int:pk>',views.VehicleDetailView.as_view()),
     url(r'^vehicle/$',views.form_vehicle_view,name='form_vehicle'),
     url(r'^master/$',views.form_master_view,name='form_master'),
-    url(r'^signup/$',views.signup,name='registration'),
+    url(r'^signup/$',views.signup,name='registered'),
 
 
 ]

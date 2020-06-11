@@ -8,8 +8,6 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
 
-def index(request):
-    return render(request,'signup/index.html')
 
 @login_required
 def user_logout(request):
@@ -30,20 +28,21 @@ def signup(request):
             profile = profile_form.save(commit=False)
             profile.user = user
 
-            if 'profile_pics' in request.FILES:
-                profile.profile_pics = request.FILES.get('profile_pics')
+        elif 'profile_pics' in request.FILES:
+            profile.profile_pics = request.FILES.get('profile_pics')
 
             profile.save()
 
             registered = True
         else:
+
             print(user_form.errors,profile_form.errors)
 
     else:
         user_form = forms.UserForm()
         profile_form = forms.UserProfileInfoForm()
 
-    return render(request, 'register/registration.html',context={'user_form':user_form,'profile_form':profile_form,'registered':registered})
+        return render(request, 'signup/registration.html',context={'user_form':user_form,'profile_form':profile_form,'registered':registered})
 
 
 
@@ -68,4 +67,9 @@ def user_login(request):
             return HttpResponse("invalid login details supplied")
 
     else:
-        return render(request,'register/login.html')
+        return render(request,'signup/login.html')
+
+
+
+def index(request):
+    return render(request,'signup/index.html')
